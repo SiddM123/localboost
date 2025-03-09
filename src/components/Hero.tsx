@@ -127,11 +127,11 @@ const Hero = () => {
               {/* Product Preview */}
               <div className="flex flex-col lg:flex-row w-full">
                 {/* Campaign Showcase */}
-                <div className="w-full lg:w-2/3 p-6 md:p-8 lg:p-10 relative">
+                <div className="w-full lg:w-2/3 p-4 md:p-6 lg:p-10 relative min-h-[400px] lg:min-h-0">
                   {sampleCampaigns.map((campaign, idx) => (
                     <div 
                       key={idx}
-                      className={`absolute inset-0 p-6 md:p-8 lg:p-10 transition-all duration-500 ease-in-out ${
+                      className={`absolute inset-0 p-4 md:p-6 lg:p-10 transition-all duration-500 ease-in-out ${
                         idx === activeCampaignIndex 
                           ? "opacity-100 translate-x-0" 
                           : idx < activeCampaignIndex 
@@ -142,25 +142,25 @@ const Hero = () => {
                     >
                       <div className="text-left">
                         <div className="flex items-center gap-3 mb-4">
-                          <div className={`flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r ${campaign.color} text-white`}>
+                          <div className={`flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full bg-gradient-to-r ${campaign.color} text-white`}>
                             {campaign.icon}
                           </div>
                           <div>
-                            <h3 className="font-bold text-xl">{campaign.name}</h3>
-                            <p className="text-sm text-gray-500">by {campaign.business}</p>
+                            <h3 className="font-bold text-lg md:text-xl">{campaign.name}</h3>
+                            <p className="text-xs md:text-sm text-gray-500">by {campaign.business}</p>
                           </div>
                         </div>
                         
-                        <p className="text-gray-700 mb-6 text-base">
+                        <p className="text-gray-700 mb-6 text-sm md:text-base line-clamp-3 md:line-clamp-none">
                           {campaign.description}
                         </p>
                         
-                        <div className="mb-6">
-                          <div className="flex justify-between mb-1">
+                        <div className="mb-4 md:mb-6">
+                          <div className="flex justify-between mb-1 text-sm md:text-base">
                             <span className="text-blue-600 font-medium">{campaign.raisedAmount} raised</span>
                             <span className="text-gray-500">Goal: {campaign.goalAmount}</span>
                           </div>
-                          <div className="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
+                          <div className="w-full h-2 md:h-3 bg-gray-100 rounded-full overflow-hidden">
                             <div 
                               className={`h-full bg-gradient-to-r ${campaign.color} animate-pulse-subtle`}
                               style={{ 
@@ -169,19 +169,19 @@ const Hero = () => {
                               }}
                             ></div>
                           </div>
-                          <div className="flex justify-between mt-1 text-sm text-gray-500">
+                          <div className="flex justify-between mt-1 text-xs md:text-sm text-gray-500">
                             <span>{campaign.backers} backers</span>
                             <span>{campaign.daysLeft} days left</span>
                           </div>
                         </div>
                         
-                        <div className="flex gap-2 flex-wrap mb-6">
-                          <div className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs">Free Coffee for 3 Months</div>
-                          <div className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs">Reserved Desk</div>
-                          <div className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs">Meeting Room Access</div>
+                        <div className="flex gap-2 flex-wrap mb-4 md:mb-6">
+                          <div className="px-2 md:px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-[10px] md:text-xs">Free Coffee for 3 Months</div>
+                          <div className="px-2 md:px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-[10px] md:text-xs">Reserved Desk</div>
+                          <div className="px-2 md:px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-[10px] md:text-xs">Meeting Room Access</div>
                         </div>
                         
-                        <button className="bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+                        <button className="w-full md:w-auto bg-blue-600 text-white px-4 md:px-5 py-2 md:py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
                           Support This Campaign
                         </button>
                       </div>
@@ -189,48 +189,48 @@ const Hero = () => {
                   ))}
                   
                   {/* Campaign Counter and Coming Soon - Positioned below the campaign info */}
-                  <div className="absolute bottom-4 right-6 md:right-8 lg:right-10 flex items-center justify-end gap-3">
-                    <div className="flex items-center gap-3">
-                      <div className="text-xs font-medium text-blue-700">
+                  <div className="absolute bottom-2 md:bottom-4 right-4 md:right-6 lg:right-10 flex items-center justify-end gap-2 md:gap-3">
+                    <div className="flex items-center gap-2 md:gap-3">
+                      <div className="text-[10px] md:text-xs font-medium text-blue-700">
                         Campaign <span className="text-blue-900">{activeCampaignIndex + 1}</span> of {sampleCampaigns.length}
                       </div>
                       <div className="flex gap-1">
                         {sampleCampaigns.map((_, idx) => (
                           <span 
                             key={idx} 
-                            className={`inline-block h-1.5 rounded-full transition-all duration-300 ${
-                              idx === activeCampaignIndex ? 'w-6 bg-blue-600' : 'w-1.5 bg-blue-200'
+                            className={`inline-block h-1 md:h-1.5 rounded-full transition-all duration-300 ${
+                              idx === activeCampaignIndex ? 'w-4 md:w-6 bg-blue-600' : 'w-1 md:w-1.5 bg-blue-200'
                             }`}
                           ></span>
                         ))}
                       </div>
                     </div>
                     
-                    <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-medium py-1.5 px-4 rounded-full shadow-sm animate-pulse-subtle">
+                    <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[10px] md:text-xs font-medium py-1 px-2 md:px-4 rounded-full shadow-sm animate-pulse-subtle">
                       Coming Soon
                     </div>
                   </div>
                 </div>
                 
                 {/* Campaign Features */}
-                <div className="w-full lg:w-1/3 bg-gradient-to-b from-blue-50 to-indigo-50 p-6 md:p-8 lg:p-10 flex flex-col justify-center">
-                  <div className="mb-4 inline-block px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
+                <div className="w-full lg:w-1/3 bg-gradient-to-b from-blue-50 to-indigo-50 p-4 md:p-6 lg:p-10 flex flex-col justify-center">
+                  <div className="mb-4 inline-block px-3 md:px-4 py-1 md:py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs md:text-sm font-medium">
                     Platform Features
                   </div>
-                  <h3 className="text-xl font-bold mb-6">Discover Local Campaigns</h3>
+                  <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6">Discover Local Campaigns</h3>
                   
-                  <div className="space-y-4">
+                  <div className="space-y-3 md:space-y-4">
                     {[
-                      { icon: <Store className="h-5 w-5" />, text: "Support small businesses in your community" },
-                      { icon: <Heart className="h-5 w-5" />, text: "Make a meaningful local impact" },
-                      { icon: <MapPin className="h-5 w-5" />, text: "Find campaigns near you" },
-                      { icon: <Users className="h-5 w-5" />, text: "Join a community of local supporters" }
+                      { icon: <Store className="h-4 w-4 md:h-5 md:w-5" />, text: "Support small businesses in your community" },
+                      { icon: <Heart className="h-4 w-4 md:h-5 md:w-5" />, text: "Make a meaningful local impact" },
+                      { icon: <MapPin className="h-4 w-4 md:h-5 md:w-5" />, text: "Find campaigns near you" },
+                      { icon: <Users className="h-4 w-4 md:h-5 md:w-5" />, text: "Join a community of local supporters" }
                     ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-3">
-                        <div className="flex-shrink-0 h-8 w-8 rounded-full bg-white flex items-center justify-center text-blue-600">
+                      <div key={i} className="flex items-center gap-2 md:gap-3">
+                        <div className="flex-shrink-0 h-6 w-6 md:h-8 md:w-8 rounded-full bg-white flex items-center justify-center text-blue-600">
                           {item.icon}
                         </div>
-                        <p className="text-sm">{item.text}</p>
+                        <p className="text-xs md:text-sm">{item.text}</p>
                       </div>
                     ))}
                   </div>
