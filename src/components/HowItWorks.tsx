@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Building, HandCoins, Gift, ChevronRight } from "lucide-react";
+import { Building, HandCoins, Gift } from "lucide-react";
 
 const steps = [
   {
@@ -37,39 +36,34 @@ const HowItWorks = () => {
         </div>
 
         <div className="relative">
-          {/* Connection Line */}
-          <div className="absolute top-24 left-1/2 -translate-x-1/2 w-2/3 h-0.5 bg-blue-100 hidden md:block" />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {steps.map((step, index) => (
               <div 
                 key={index} 
                 className="relative flex flex-col items-center text-center"
               >
-                {index < steps.length - 1 && (
-                  <div className="absolute top-16 left-1/2 right-0 hidden md:flex items-center justify-center">
-                    <ChevronRight className="h-8 w-8 text-blue-300" />
-                  </div>
-                )}
-                
-                <div className={`
-                  flex h-20 w-20 items-center justify-center rounded-full mb-6 z-10
-                  ${step.forWho === 'business' ? 'bg-blue-50 border border-blue-100' : 'bg-blue-600 text-white'}
-                `}>
-                  {step.icon}
+                <div className="flex h-20 w-20 items-center justify-center rounded-full mb-6 z-10 bg-blue-50 border border-blue-100 transform transition-all duration-300 hover:scale-110 hover:shadow-md">
+                  {React.cloneElement(step.icon, { 
+                    className: "h-10 w-10 text-blue-600" 
+                  })}
                 </div>
                 
-                <div className="bg-white rounded-xl p-6 shadow-soft border border-gray-100 h-full w-full">
-                  <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
+                <div className="bg-white rounded-xl p-6 shadow-soft border border-gray-100 h-full w-full transition-all duration-300 hover:shadow-md hover:border-blue-100">
+                  <div className="flex items-center justify-center mb-3">
+                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-700 font-bold text-sm mr-2">
+                      {index + 1}
+                    </span>
+                    <h3 className="text-xl font-semibold">{step.title}</h3>
+                  </div>
                   <p className="text-muted-foreground">{step.description}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
-
+        
         <div className="mt-16 text-center">
-          <div id="for-businesses" className="inline-block px-4 py-1.5 bg-blue-50 text-blue-700 rounded-full text-sm font-medium mb-4">
+          <div className="inline-block px-4 py-1.5 bg-blue-50 text-blue-700 rounded-full text-sm font-medium mb-4">
             For Businesses & Contributors
           </div>
           <h3 className="text-2xl font-bold mb-4">Join the LocalBoost Community</h3>
